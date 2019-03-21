@@ -14,15 +14,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        /*val openButton = findViewById<Button>(R.id.openButton)
+        val openButton = findViewById<Button>(R.id.openButton)
         openButton.setOnClickListener {
             Toast.makeText(this@MainActivity, "Abrir", Toast.LENGTH_SHORT).show()
             openRequest()
-        }*/
-        Fuel.post("http://krate.ddns.net:5000/open")
-            .jsonBody("{ \"text\":\"Hola desde mi app Android\"}")
-            .also { println(it) }
-            .response { result -> }
+        }
     }
 
     private fun openRequest() {
