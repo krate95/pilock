@@ -10,6 +10,8 @@ GPIO.setup(8,GPIO.OUT)    #Ponemos el pin 8 como salida
 p = GPIO.PWM(8,50)        #Ponemos el pin 8 en modo PWM y enviamos 50 pulsos por segundo
 p.start(2.5)               #Enviamos un pulso del 7.5% para centrar el servo
 
+openDoor = False
+
 green = 11
 red = 7
 
@@ -35,8 +37,9 @@ def open():
     time.sleep(1)
     g.ChangeDutyCycle(100)
     r.ChangeDutyCycle(0)
-    print(content["text"])
-    return content["text"]
+    print("Oki doki, puerta abierta")
+    openDoor = True
+    return jsonify({'Open':openDoor})
 @app.route('/close', methods=['POST'])
 def close():
     content = request.get_json()
@@ -47,8 +50,13 @@ def close():
     time.sleep(1) # sleep 1 second 
     g.ChangeDutyCycle(0)
     r.ChangeDutyCycle(100)
-    print(content["text"])
-    return content["text"]
+    print("Puerta cerrada")
+    openDoor = False
+    return jsonify({'Open':openDoor})
+
+@app.route('/get', methods=['GET'])
+def get():
+    return jsonify({'Open':openDoor})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
