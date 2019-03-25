@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">FingerPrintAuth</string>
+
+    <string name="btn_authenticate">Huella</string>
+
+    <string name="biometric_title">Huella</string>
+    <string name="biometric_subtitle">Ponga la huella para abrir o cerrar la puerta</string>
+    <string name="biometric_description">Ponga su dedo en el sensor para verificar tu identidad</string>
+    <string name="biometric_negative_button_text">Cancelar</string>
+
+    <string name="biometric_error_sdk_not_supported">Sdk version not supported</string>
+    <string name="biometric_error_hardware_not_supported">Device does not support biometric authentication</string>
+    <string name="biometric_error_fingerprint_not_available">Fingerprint is not registered in device</string>
+    <string name="biometric_error_permission_not_granted">Permission is not granted by user</string>
+    <string name="biometric_failure">No se ha podido verificar su identidad</string>
+    <string name="biometric_cancelled">Authentication cancelled by user</string>
+    <string name="biometric_success1">Puerta abriendose</string>
+    <string name="biometric_success2">Puerta cerrandose</string>
+
+    <string name="infoString">Ponga la contraseña o pulse el botón de huella para abrir y cerrar la puerta :)</string>
+    <string name="passString">Contraseña</string>
+
+    <string name="buttonFormOpen">Abrir</string>
+    <string name="buttonFormClose">Cerrar</string>
+</resources>
