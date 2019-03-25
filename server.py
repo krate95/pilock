@@ -27,6 +27,10 @@ r.start(0)
 app = Flask(__name__)
 api = Api(app)
 
+
+g.ChangeDutyCycle(0)
+r.ChangeDutyCycle(100)
+
 @app.route('/open', methods=['POST'])
 def open():
     content = request.get_json()
