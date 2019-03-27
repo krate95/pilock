@@ -12,15 +12,16 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="364dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/ipText" android:layout_alignStart="@+id/null"
+                android:hint="@string/ipText"
                 android:inputType="textNoSuggestions" android:id="@+id/ipTextInput"/>
     </com.google.android.material.textfield.TextInputLayout>
     <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
+            android:text="@string/buttonText"
+            android:layout_width="114dp"
             android:layout_height="wrap_content" android:id="@+id/ipButton" android:layout_marginTop="376dp"
             android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
-            android:layout_marginBottom="307dp" android:layout_centerHorizontal="true"/>
+            android:layout_marginBottom="312dp" android:layout_centerHorizontal="true"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
     <TextView
             android:text="@string/serverLayoutInfo"
             android:layout_width="299dp"
