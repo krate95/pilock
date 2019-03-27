@@ -22,4 +22,8 @@
 
     <string name="buttonFormOpen">Abrir</string>
     <string name="buttonFormClose">Cerrar</string>
+
+    <string name="serverLayoutInfo">Escriba la ip de la puerta que desea abrir</string>
+    <string name="buttonText">Acceder</string>
+    <string name="ipText">191.XXX.X.XXX:8080</string>
 </resources>

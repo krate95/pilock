@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="351dp"
+            android:layout_height="wrap_content" android:layout_marginTop="221dp" android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true" android:layout_marginBottom="454dp"
+            android:layout_centerHorizontal="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="364dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/ipText" android:layout_alignStart="@+id/null"
+                android:inputType="textNoSuggestions" android:id="@+id/ipTextInput"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+            android:text="Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/ipButton" android:layout_marginTop="376dp"
+            android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
+            android:layout_marginBottom="307dp" android:layout_centerHorizontal="true"/>
+    <TextView
+            android:text="@string/serverLayoutInfo"
+            android:layout_width="299dp"
+            android:layout_height="74dp" android:id="@+id/textView2" android:layout_marginTop="110dp"
+            android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
+            android:layout_marginBottom="547dp" android:textSize="24sp" android:textAlignment="center"
+            android:layout_centerHorizontal="true"/>
+</RelativeLayout>

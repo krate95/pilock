@@ -20,6 +20,7 @@ import java.lang.Exception
 class MainActivity : AppCompatActivity(), BiometricCallback {
 
     private var doorStatus: Boolean? = null
+    private val IP = intent.getStringExtra("com.garrido18.fingerprintauth.ipActivity.IP")
 
     override fun onPreConditionsFailed(error: BiometricError) {
 
@@ -37,12 +38,13 @@ class MainActivity : AppCompatActivity(), BiometricCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (Network.testConexion(this)){
-            getDoorStatusVolley("http://krate.ddns.net:5000/get")
-        }else{
-            Toast.makeText(this, "No hay conexión a internet, conectese a una red y vuelva a intentarlo", Toast.LENGTH_LONG).show()
-        }
+        doorStatus = intent.getBooleanExtra("com.garrido18.fingerprintauth.ipActivity.DOOR",true)
 
+        if (doorStatus == true){
+            buttonForm.text = "Cerrar"
+        }else{
+            buttonForm.text = "Abrir"
+        }
 
         buttonForm.setOnClickListener{
             var pass: String = passForm.text.toString()
@@ -81,10 +83,10 @@ class MainActivity : AppCompatActivity(), BiometricCallback {
     override fun onAuthenticationSuccessful() {
         //getDoorStatusVolley("http://krate.ddns.net:5000/get")
         if (doorStatus == true){
-            postDoorVolley("http://krate.ddns.net:5000/close")
+            postDoorVolley("$IP/close")
             Toast.makeText(applicationContext,getString(R.string.biometric_success2), Toast.LENGTH_LONG).show()
         }else{
-            postDoorVolley("http://krate.ddns.net:5000/open")
+            postDoorVolley("$IP/open")
             Toast.makeText(applicationContext,getString(R.string.biometric_success1), Toast.LENGTH_LONG).show()
         }
     }
@@ -95,27 +97,6 @@ class MainActivity : AppCompatActivity(), BiometricCallback {
 
     override fun onAuthenticationError(errorCode: Int, errString: CharSequence?) {
         //        Toast.makeText(getApplicationContext(), errString, Toast.LENGTH_LONG).show();
-    }
-
-    private fun getDoorStatusVolley(url:String){
-        val queue = Volley.newRequestQueue(this)
-
-        val get = StringRequest(Request.Method.GET,url, Response.Listener<String> {
-                response ->
-            try{
-                val json = JSONObject(response)
-                doorStatus = json.getBoolean("Open")
-                if (doorStatus == true){
-                    buttonForm.text = getString(R.string.buttonFormClose)
-                }else{
-                    buttonForm.text = getString(R.string.buttonFormOpen)
-                }
-            }catch(e: Exception){
-
-            }
-        }, Response.ErrorListener {  })
-
-        queue.add(get)
     }
 
     private fun postDoorVolley(url:String){
