@@ -19,8 +19,9 @@ import java.lang.Exception
 
 class MainActivity : AppCompatActivity(), BiometricCallback {
 
-    private var doorStatus: Boolean? = null
-    private val IP = intent.getStringExtra("com.garrido18.fingerprintauth.ipActivity.IP")
+    //private val DOOR = intent.getBooleanExtra("com.garrido18.fingerprintauth.ipActivity.DOOR",false)
+    private var ip:String? = null
+    private var doorStatus:Boolean? = null
 
     override fun onPreConditionsFailed(error: BiometricError) {
 
@@ -38,7 +39,10 @@ class MainActivity : AppCompatActivity(), BiometricCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        doorStatus = intent.getBooleanExtra("com.garrido18.fingerprintauth.ipActivity.DOOR",true)
+        val IP = intent.getStringExtra("com.garrido18.fingerprintauth.ipActivity.IP")
+        ip = IP
+        val DOOR = intent.getBooleanExtra("com.garrido18.fingerprintauth.ipActivity.DOOR",false)
+        doorStatus = DOOR
 
         if (doorStatus == true){
             buttonForm.text = "Cerrar"
@@ -83,10 +87,10 @@ class MainActivity : AppCompatActivity(), BiometricCallback {
     override fun onAuthenticationSuccessful() {
         //getDoorStatusVolley("http://krate.ddns.net:5000/get")
         if (doorStatus == true){
-            postDoorVolley("$IP/close")
+            postDoorVolley("http://$ip/close")
             Toast.makeText(applicationContext,getString(R.string.biometric_success2), Toast.LENGTH_LONG).show()
         }else{
-            postDoorVolley("$IP/open")
+            postDoorVolley("http://$ip/open")
             Toast.makeText(applicationContext,getString(R.string.biometric_success1), Toast.LENGTH_LONG).show()
         }
     }

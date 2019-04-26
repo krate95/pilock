@@ -2,6 +2,7 @@ package com.garrido18.fingerprintauth
 
 import android.content.Intent
 import android.os.Bundle
+import com.pusher.pushnotifications.PushNotifications;
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
@@ -15,16 +16,21 @@ class ipActivity : AppCompatActivity() {
 
     val TAG ="com.garrido18.fingerprintauth.ipActivity.IP"
     val TAG2 ="com.garrido18.fingerprintauth.ipActivity.DOOR"
-    var ip: String? = null
+
+    var door:Boolean? = null
+    var ip:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.server_ip)
 
+        PushNotifications.start(this, "49348893-bfb2-454f-beeb-d818c7e371fc")
+        PushNotifications.addDeviceInterest("hello")
+
         ipButton.setOnClickListener{
 
             ip = ipTextInput.text.toString()
-            getDoorStatusVolley("$ip/get")
+            getDoorStatusVolley("http://$ip/get")
         }
     }
 
@@ -34,17 +40,23 @@ class ipActivity : AppCompatActivity() {
         val get = StringRequest(Request.Method.GET,url, Response.Listener<String> {
                 response ->
             try{
-                val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra(TAG, ip)
                 val json = JSONObject(response)
-                var door = json.getBoolean("Open")
-                intent.putExtra(TAG2,door)
-                startActivity(intent)
+                door = json.getBoolean("Open")
+                if (door != null){
+                    changeActivity(door, ip)
+                }
             }catch(e: Exception){
 
             }
         }, Response.ErrorListener {  })
 
         queue.add(get)
+    }
+
+    private fun changeActivity(door:Boolean?, ip:String?){
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra(TAG, ip)
+        intent.putExtra(TAG2,door)
+        startActivity(intent)
     }
 }

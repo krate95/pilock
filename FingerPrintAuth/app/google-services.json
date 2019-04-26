@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "497261999864",
+    "firebase_url": "https://pilocknotifications.firebaseio.com",
+    "project_id": "pilocknotifications",
+    "storage_bucket": "pilocknotifications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497261999864:android:907857f3c03f0349",
+        "android_client_info": {
+          "package_name": "com.garrido18.fingerprintauth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497261999864-fvgvoq7vec2kf9e36j4lfoafnfh3ds0b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvSAA7j2pfxHo2AHs4bMUgDM62dp1e6WE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497261999864-fvgvoq7vec2kf9e36j4lfoafnfh3ds0b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
